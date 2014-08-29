@@ -9,5 +9,6 @@ if(move_uploaded_file($_FILES["file"]["tmp_name"], "/static/images/".$new_image_
 	$response['message'] = "Se guardo";
 	$response['route'] = "http://104.131.36.201/static/images/"+$new_image_name;
 	echo json_encode($response);
+	
 }
 ?>
