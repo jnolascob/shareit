@@ -27,4 +27,5 @@ $response['message'] = $message;
 $response['route'] = $uploadfile;
 $response['name'] = $add_name;
 echo json_encode($response);
+
 ?>
