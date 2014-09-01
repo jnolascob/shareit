@@ -1,11 +1,14 @@
 <?php
 //print_r($_FILES);
+$path = $_FILES['file']['name'];
+$ext = pathinfo($path, PATHINFO_EXTENSION);
+
 $response = array();
 
 /*paths*/
 $success = 0;
 $message = "Pendiente";
-$add_name = date('Ymd_His')."_".rand().".jpg";
+$add_name = date('Ymd_His')."_".rand().".".$ext;
 $uploaddir = '/var/www/html/static/images/';
 //$uploadfile = $uploaddir . basename($_FILES['file']['name']);
 $uploadfile = $uploaddir.$add_name;

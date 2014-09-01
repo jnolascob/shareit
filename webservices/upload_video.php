@@ -1,19 +1,30 @@
 <?php
-require_once '../model/Imagenes.php';
-$I = new Imagenes();
-// Where the file is going to be placed
-$target_path = "/home/siont/public_html/ws/static/videos/";
+//print_r($_FILES);
+$path = $_FILES['file']['name'];
+$ext = pathinfo($path, PATHINFO_EXTENSION);
 
-$new_video_name = "_".rand()."_".rand()."video.3gp";
-move_uploaded_file($_FILES["file"]["tmp_name"], "/home/siont/public_html/ws/static/videos/".$new_video_name);
+$response = array();
 
-$video_descripcion = "descripcion";
-$video_nombre = $new_video_name;
-$video_url = "http://www.siont.com.co/ws/static/videos/".$video_nombre;
-$video_like = 0;
-$usuario_id = $_POST['usuario_id'];
+/*paths*/
+$success = 0;
+$message = "Pendiente";
+$add_name = date('Ymd_His')."_".rand().".".$ext;
+$uploaddir = '/var/www/html/static/videos/';
+//$uploadfile = $uploaddir . basename($_FILES['file']['name']);
+$uploadfile = $uploaddir.$add_name;
 
-$result = $I->upload_video($video_nombre,$video_descripcion,$video_url,$video_like,$usuario_id);
-
-print_r($result);
+if(move_uploaded_file($_FILES["file"]["tmp_name"], $uploadfile)){
+	$success = 1;
+	$message = "Upload success";
+}
+else{
+	$success = 0;
+	$message = "Upload failed";
+}
+$response['status'] = 200;
+$response['success'] = $success;
+$response['message'] = $message;
+$response['route'] = $uploadfile;
+$response['name'] = $add_name;
+echo json_encode($response);
 ?>
