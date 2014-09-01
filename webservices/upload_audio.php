@@ -1,15 +1,14 @@
 <?php
-print_r($_FILES);
+//print_r($_FILES);
 $path = $_FILES['file']['name'];
 $ext = pathinfo($path, PATHINFO_EXTENSION);
-echo "<br>".$ext;
 
 $response = array();
 
 /*paths*/
 $success = 0;
 $message = "Pendiente";
-$add_name = date('Ymd_His')."_".rand().".mp3";
+$add_name = date('Ymd_His')."_".rand().".".$ext;
 $uploaddir = '/var/www/html/static/audios/';
 
 $uploadfile = $uploaddir.$add_name;
