@@ -3,12 +3,14 @@
 $path = $_FILES['file']['name'];
 $ext = pathinfo($path, PATHINFO_EXTENSION);
 
+$video_name = $_POST['video_name'];
+
 $response = array();
 
 /*paths*/
 $success = 0;
 $message = "Pendiente";
-$add_name = date('Ymd_His')."_".rand().".".$ext;
+$add_name = $video_name.".".$ext;
 $uploaddir = '/var/www/html/static/videos/';
 //$uploadfile = $uploaddir . basename($_FILES['file']['name']);
 $uploadfile = $uploaddir.$add_name;

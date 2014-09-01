@@ -3,12 +3,14 @@
 $path = $_FILES['file']['name'];
 $ext = pathinfo($path, PATHINFO_EXTENSION);
 
+$audio_name = $_POST['audio_name'];
+
 $response = array();
 
 /*paths*/
 $success = 0;
 $message = "Pendiente";
-$add_name = date('Ymd_His')."_".rand().".".$ext;
+$add_name = $audio_name.".".$ext;
 $uploaddir = '/var/www/html/static/audios/';
 
 $uploadfile = $uploaddir.$add_name;
