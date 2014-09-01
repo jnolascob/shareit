@@ -5,7 +5,7 @@ $response = array();
 /*paths*/
 $success = 0;
 $message = "Pendiente";
-$uploaddir = '/var/www/html/static/images';
+$uploaddir = '/var/www/html/static/images/';
 $uploadfile = $uploaddir . basename($_FILES['file']['name']);
 
 $new_image_name = "_".rand()."_".rand()."images.jpg";
