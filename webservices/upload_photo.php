@@ -3,12 +3,15 @@
 $path = $_FILES['file']['name'];
 $ext = pathinfo($path, PATHINFO_EXTENSION);
 
+$image_name = $_POST['image_name'];
+
 $response = array();
 
 /*paths*/
 $success = 0;
 $message = "Pendiente";
-$add_name = date('Ymd_His')."_".rand().".".$ext;
+//$add_name = date('Ymd_His')."_".rand().".".$ext;
+$add_name = $image_name;
 $uploaddir = '/var/www/html/static/images/';
 //$uploadfile = $uploaddir . basename($_FILES['file']['name']);
 $uploadfile = $uploaddir.$add_name;
